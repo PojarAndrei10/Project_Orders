@@ -1,33 +1,46 @@
-public class Product {
-    private int ID;
+public class Products {
+    private int Id;
     private String nume;
     private float pret;
     private int produseInStoc;
-    public Product(int ID, String nume, float pret, int produseInStoc) {
-        this.ID = ID;
+
+    public Products(int Id, String nume, float pret, int produseInStoc) {
+        this.Id = Id;
         this.nume = nume;
         this.pret = pret;
         this.produseInStoc = produseInStoc;
     }
-    public int getID() {
-        return ID;
+    //pentru constructorul din createobjects din abstractdao
+    public Products()
+    {
+
     }
-    public void setID(int ID) {
-        this.ID = ID;
+    public int getId() {
+
+        return Id;
+    }
+    public void setId(int ID) {
+
+        this.Id = ID;
     }
     public String getNume() {
+
         return nume;
     }
     public void setNume(String nume) {
+
         this.nume = nume;
     }
     public float getPret() {
+
         return pret;
     }
     public void setPret(float pret) {
+
         this.pret = pret;
     }
     public int getProduseInStoc() {
+
         return produseInStoc;
     }
     public void setProduseInStoc(int produseInStoc) {

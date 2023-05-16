@@ -18,6 +18,7 @@ public class InterfataClient extends JFrame {
     private JButton updateButton = new JButton();
     private JButton vizualizareButton = new JButton();
     private JButton backButton = new JButton();
+    private JButton exitButton=new JButton();
 
     public void gestionareLabel() {
         id.setBounds(40, 110, 200, 30);
@@ -44,16 +45,16 @@ public class InterfataClient extends JFrame {
     public void gestionareTextField()
     {
 
-            idTextField.setBounds(140, 110, 250, 30);
+            idTextField.setBounds(250, 110, 250, 30);
         panel.add(idTextField);
 
-            numeTextField.setBounds(140, 150, 250, 30);
+            numeTextField.setBounds(250, 150, 250, 30);
         panel.add(numeTextField);
 
-            prenumeTextField.setBounds(140,190,250,30);
+            prenumeTextField.setBounds(250,190,250,30);
         panel.add(prenumeTextField);
 
-            telefonTextField.setBounds(140,230,250,30);
+            telefonTextField.setBounds(250,230,250,30);
         panel.add(telefonTextField);
 
         }
@@ -65,8 +66,9 @@ public class InterfataClient extends JFrame {
             panel.add(backButton);
 
             vizualizareButton.setBounds(270, 280, 200, 50);
-            vizualizareButton.setText("Vizualizare");
+            vizualizareButton.setText("Vizualizare clienti");
             vizualizareButton.setBackground(new Color(72, 99, 182));
+
             panel.add(vizualizareButton);
 
             insertButton.setBounds(490, 280, 220, 50);
@@ -83,8 +85,14 @@ public class InterfataClient extends JFrame {
             updateButton.setText("Update");
             updateButton.setBackground(new Color(72, 99, 182));
             panel.add(updateButton);
+
+            exitButton.setBounds(1000,700,150,50);
+            exitButton.setText("EXIT");
+            exitButton.setBackground(new Color(72, 99, 182));
+            panel.add(exitButton);
         }
         public InterfataClient() {
+        this.setTitle("PAGINA PENTRU CLIENTI");
             panel.setBackground(new Color(255, 255, 182));
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(1200, 800);
@@ -111,20 +119,21 @@ public class InterfataClient extends JFrame {
         return telefonTextField.getText().toString();
     }
 
-    public void addBackListener(ActionListener e) {
+    public void butonInapoiListener(ActionListener e) {
         backButton.addActionListener(e);
     }
-    public void addShowAllListener(ActionListener e) {
+    public void butonVizualizareListener(ActionListener e) {
         vizualizareButton.addActionListener(e);
     }
-    public void addInsertListener(ActionListener e) {
+    public void butonInserareListener(ActionListener e) {
         insertButton.addActionListener(e);
     }
-    public void addDeleteListener(ActionListener e) {
+    public void butonStergereListener(ActionListener e) {
         deleteButton.addActionListener(e);
     }
-    public void addUpdateListener(ActionListener e) {
+    public void butonUpdateListener(ActionListener e) {
         updateButton.addActionListener(e);
     }
+    public void butonExitListener(ActionListener e) {exitButton.addActionListener(e);}
 }
 

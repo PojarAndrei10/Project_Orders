@@ -19,22 +19,23 @@ public class InterfataProduct extends JFrame {
     private JButton updateButton = new JButton();
     private JButton vizualizareButton = new JButton();
     private JButton backButton = new JButton();
+    private JButton exitButton=new JButton();
 
     public void gestionareLabel() {
         id.setBounds(40, 110, 200, 30);
-        id.setText("Id order");
+        id.setText("Id");
         id.setFont(new Font("Serif", Font.ITALIC, 16));
 
         nume.setBounds(40, 150, 200, 30);
-        nume.setText("Id client");
+        nume.setText("Nume produs");
         nume.setFont(new Font("Serif", Font.ITALIC, 16));
 
         pret.setBounds(40, 190, 200, 30);
-        pret.setText("Id product");
+        pret.setText("Pret produs");
         pret.setFont(new Font("Serif", Font.ITALIC, 16));
 
         stoc.setBounds(40, 230, 200, 30);
-        stoc.setText("Cantitate");
+        stoc.setText("Produse in stoc");
         stoc.setFont(new Font("Serif", Font.ITALIC, 16));
 
         panel.add(id);
@@ -44,16 +45,16 @@ public class InterfataProduct extends JFrame {
     }
     public void gestionareTextField()
     {
-        idTextField.setBounds(140, 110, 250, 30);
+        idTextField.setBounds(250, 110, 250, 30);
         panel.add(idTextField);
 
-        numeTextField.setBounds(140, 150, 250, 30);
+        numeTextField.setBounds(250, 150, 250, 30);
         panel.add(numeTextField);
 
-        pretTextField.setBounds(140,190,250,30);
+        pretTextField.setBounds(250,190,250,30);
         panel.add(pretTextField);
 
-        stocTextField.setBounds(140,230,250,30);
+        stocTextField.setBounds(250,230,250,30);
         panel.add(stocTextField);
 
     }
@@ -65,17 +66,17 @@ public class InterfataProduct extends JFrame {
         panel.add(backButton);
 
         vizualizareButton.setBounds(270, 280, 200, 50);
-        vizualizareButton.setText("Vizualizare");
+        vizualizareButton.setText("Vizualizare produse");
         vizualizareButton.setBackground(new Color(72, 99, 182));
         panel.add(vizualizareButton);
 
         insertButton.setBounds(490, 280, 220, 50);
-        insertButton.setText("Inserare client");
+        insertButton.setText("Inserare produs");
         insertButton.setBackground(new Color(72, 99, 182));
         panel.add(insertButton);
 
         deleteButton.setBounds(490, 350, 220, 50);
-        deleteButton.setText("Stergere client");
+        deleteButton.setText("Stergere produs");
         deleteButton.setBackground(new Color(72, 99, 182));
         panel.add(deleteButton);
 
@@ -83,8 +84,14 @@ public class InterfataProduct extends JFrame {
         updateButton.setText("Update");
         updateButton.setBackground(new Color(72, 99, 182));
         panel.add(updateButton);
+
+        exitButton.setBounds(1000,700,150,50);
+        exitButton.setText("EXIT");
+        exitButton.setBackground(new Color(72, 99, 182));
+        panel.add(exitButton);
     }
     public InterfataProduct() {
+        this.setTitle("PAGINA PENTRU PRODUSE");
         panel.setBackground(new Color(255, 255, 182));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 800);
@@ -102,32 +109,30 @@ public class InterfataProduct extends JFrame {
     public int getIdTextField() {
         return Integer.parseInt(idTextField.getText());
     }
-
-    public String getClientIDTextField() {
+    public String getNumeTextField() {
         return numeTextField.getText().toString();
     }
-
-    public String getProductIDTextField() {
+    public String getPretTextField() {
         return pretTextField.getText().toString();
     }
-
-    public String getCantitateTextField() {
+    public String getStocTextField() {
         return stocTextField.getText().toString();
     }
+    public void butonExitListener(ActionListener e) {exitButton.addActionListener(e);}
 
-    public void addBackListener(ActionListener e) {
+    public void butonInapoiListener(ActionListener e) {
         backButton.addActionListener(e);
     }
-    public void addShowAllListener(ActionListener e) {
+    public void butonVizualizareListener(ActionListener e) {
         vizualizareButton.addActionListener(e);
     }
-    public void addInsertListener(ActionListener e) {
+    public void butonInserareListener(ActionListener e) {
         insertButton.addActionListener(e);
     }
-    public void addDeleteListener(ActionListener e) {
+    public void butonStergereListener(ActionListener e) {
         deleteButton.addActionListener(e);
     }
-    public void addUpdateListener(ActionListener e) {
+    public void butonUpdateListener(ActionListener e) {
         updateButton.addActionListener(e);
     }
 }

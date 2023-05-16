@@ -17,13 +17,14 @@ public class InterfataOrder extends JFrame{
 
     private JButton insertButton = new JButton();
     private JButton deleteButton = new JButton();
-    private JButton updateButton = new JButton();
+    ///private JButton updateButton = new JButton();
     private JButton vizualizareButton = new JButton();
     private JButton backButton = new JButton();
+    private JButton exitButton=new JButton();
 
     public void gestionareLabel() {
         id.setBounds(40, 110, 200, 30);
-        id.setText("Id order");
+        id.setText("Id comanda");
         id.setFont(new Font("Serif", Font.ITALIC, 16));
 
         clientID.setBounds(40, 150, 200, 30);
@@ -31,11 +32,11 @@ public class InterfataOrder extends JFrame{
         clientID.setFont(new Font("Serif", Font.ITALIC, 16));
 
         productID.setBounds(40, 190, 200, 30);
-        productID.setText("Id product");
+        productID.setText("Id produs");
         productID.setFont(new Font("Serif", Font.ITALIC, 16));
 
         cantitate.setBounds(40, 230, 200, 30);
-        cantitate.setText("Cantitate");
+        cantitate.setText("Cantitate dorita");
         cantitate.setFont(new Font("Serif", Font.ITALIC, 16));
 
         panel.add(id);
@@ -46,16 +47,16 @@ public class InterfataOrder extends JFrame{
     public void gestionareTextField()
     {
 
-        idTextField.setBounds(140, 110, 250, 30);
+        idTextField.setBounds(250, 110, 250, 30);
         panel.add(idTextField);
 
-        clientIDTextField.setBounds(140, 150, 250, 30);
+        clientIDTextField.setBounds(250, 150, 250, 30);
         panel.add(clientIDTextField);
 
-        productIDTextField.setBounds(140,190,250,30);
+        productIDTextField.setBounds(250,190,250,30);
         panel.add(productIDTextField);
 
-        cantitateTextField.setBounds(140,230,250,30);
+        cantitateTextField.setBounds(250,230,250,30);
         panel.add(cantitateTextField);
 
     }
@@ -67,26 +68,32 @@ public class InterfataOrder extends JFrame{
         panel.add(backButton);
 
         vizualizareButton.setBounds(270, 280, 200, 50);
-        vizualizareButton.setText("Vizualizare");
+        vizualizareButton.setText("Vizualizare comenzi");
         vizualizareButton.setBackground(new Color(72, 99, 182));
         panel.add(vizualizareButton);
 
         insertButton.setBounds(490, 280, 220, 50);
-        insertButton.setText("Inserare client");
+        insertButton.setText("Inserare comanda");
         insertButton.setBackground(new Color(72, 99, 182));
         panel.add(insertButton);
 
         deleteButton.setBounds(490, 350, 220, 50);
-        deleteButton.setText("Stergere client");
+        deleteButton.setText("Stergere comanda");
         deleteButton.setBackground(new Color(72, 99, 182));
         panel.add(deleteButton);
 
-        updateButton.setBounds(270, 350 , 200, 50);
-        updateButton.setText("Update");
-        updateButton.setBackground(new Color(72, 99, 182));
-        panel.add(updateButton);
+        ///updateButton.setBounds(270, 350 , 200, 50);
+       /// updateButton.setText("Update");
+       /// updateButton.setBackground(new Color(72, 99, 182));
+        ///panel.add(updateButton);
+
+        exitButton.setBounds(1000,700,150,50);
+        exitButton.setText("EXIT");
+        exitButton.setBackground(new Color(72, 99, 182));
+        panel.add(exitButton);
     }
     public InterfataOrder() {
+        this.setTitle("PAGINA PENTRU COMENZI");
         panel.setBackground(new Color(255, 255, 182));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 800);
@@ -117,20 +124,24 @@ public class InterfataOrder extends JFrame{
         return cantitateTextField.getText().toString();
     }
 
-    public void addBackListener(ActionListener e) {
+
+    public void butonInapoiListener(ActionListener e) {
         backButton.addActionListener(e);
     }
-    public void addShowAllListener(ActionListener e) {
+    public void butonVizualizareListener(ActionListener e) {
         vizualizareButton.addActionListener(e);
     }
-    public void addInsertListener(ActionListener e) {
+    public void butonInserareListener(ActionListener e) {
         insertButton.addActionListener(e);
     }
-    public void addDeleteListener(ActionListener e) {
+    public void butonStergereListener(ActionListener e) {
         deleteButton.addActionListener(e);
     }
-    public void addUpdateListener(ActionListener e) {
-        updateButton.addActionListener(e);
-    }
+
+    ///consideram ca nu facem modificari la comanda
+   /// public void addUpdateListener(ActionListener e) {
+       /// updateButton.addActionListener(e);
+  ///  }
+    public void butonExitListener(ActionListener e) {exitButton.addActionListener(e);}
 
 }

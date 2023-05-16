@@ -1,5 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-       InterfataProduct i=new InterfataProduct();
+        InterfataPrincipala interfataPrincipala=new InterfataPrincipala();
+        InterfataPrincipalaController interfataPrincipalaController;
+        interfataPrincipalaController=new InterfataPrincipalaController(interfataPrincipala);
+        interfataPrincipala.setVisible(true);
     }
 }

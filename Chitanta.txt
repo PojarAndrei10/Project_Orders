@@ -1,0 +1,12 @@
+Id-ul comenzii:10
+Produsul comandat:candelabre
+Pretul unei bucati:300.0
+Cantitatea comandata :4
+Pretul total:1200.0
+---------------------------------------------------
+Id-ul comenzii:11
+Produsul comandat:candelabre
+Pretul unei bucati:300.0
+Cantitatea comandata :4
+Pretul total:1200.0
+---------------------------------------------------

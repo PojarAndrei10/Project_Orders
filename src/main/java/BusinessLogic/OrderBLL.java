@@ -1,13 +1,18 @@
 package BusinessLogic;
 
 import DataAccess.AbstractDAO;
+import Model.Clients;
 import Model.Orders;
 import Model.Products;
+import Presentation.InterfataClient;
 import Presentation.InterfataOrder;
 import Validator.OrderValidator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -54,6 +59,8 @@ public class OrderBLL {
                products.setProduseInStoc(products.getProduseInStoc()-o.getCantitate());
                productADAO.update(products);
                aDAO.inserare(o);
+               //Creare chitantei
+               creareBill(o,products);
             }
             else
                 JOptionPane.showMessageDialog(null,"Nu sunt destule " +
@@ -110,6 +117,41 @@ public class OrderBLL {
                     id + " was not found!");
         }
         return c;
+    }
+
+    /**
+     *
+     * @param order
+     * @param product
+     * Creaza chitanta in care va aparea id-ul comenzii,numele produsului,cantitatea comandata si pretul care trebuie
+     * sa il plateasca clientul
+     */
+    public void creareBill(Orders order, Products product)
+    {
+        try{
+            FileWriter fileWriter = new FileWriter("Chitanta.txt", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write("Id-ul comenzii:"+order.getId());
+            bufferedWriter.newLine();
+            bufferedWriter.write("Produsul comandat:"+product.getNume());
+            bufferedWriter.newLine();
+            bufferedWriter.write("Pretul unei bucati:"+product.getPret());
+            bufferedWriter.newLine();
+            bufferedWriter.write("Cantitatea comandata :"+order.getCantitate());
+            bufferedWriter.newLine();
+            bufferedWriter.write("Pretul total:"+order.getCantitate()*product.getPret());
+            bufferedWriter.newLine();
+            bufferedWriter.write("---------------------------------------------------");
+            bufferedWriter.newLine();
+
+
+            bufferedWriter.close();
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }

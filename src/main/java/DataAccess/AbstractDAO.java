@@ -25,6 +25,13 @@ public class AbstractDAO<T> {
 
         this.type = type;
     }
+
+    /**
+     *
+     * @param field
+     * @param a - reprezinta id-ul
+     * @return interogarea
+     */
     private String createSelectQuery(String field, int a) {
         StringBuilder stringBuilder ;
         stringBuilder = new StringBuilder();
@@ -36,6 +43,12 @@ public class AbstractDAO<T> {
 
         return stringBuilder.toString();
     }
+
+    /**
+     *
+     * @param resultSet - reprezinta rezultatul interogarii
+     * @return lista de obiecte
+     */
     List<T> createObjects(ResultSet resultSet) {
         int i;
         List<T> list = new ArrayList<T>();
@@ -92,6 +105,12 @@ public class AbstractDAO<T> {
         }
         return list;
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public T findById(int id) {
         ResultSet resultSet = null;
         Connection connection = null;
@@ -116,11 +135,17 @@ public class AbstractDAO<T> {
         }
         return null;
     }
+
+    /**
+     *
+     * @param type
+     * @return numele corect al tabelei
+     */
     private String getTable(String type) {
         HashMap<String, String> tableMapping = new HashMap<>();
-        tableMapping.put("Client", "client");
-        tableMapping.put("Order", "order");
-        tableMapping.put("Product", "product");
+        tableMapping.put("Clients", "clients");
+        tableMapping.put("Orders", "orders");
+        tableMapping.put("Products", "products");
 
         String tableName;
         tableName = tableMapping.getOrDefault(type, "");
@@ -131,6 +156,11 @@ public class AbstractDAO<T> {
 
         return tableName;
     }
+
+    /**
+     *
+     * @param t
+     */
     public void inserare(T t)
     {
         PreparedStatement preparedStatement = null;
@@ -181,6 +211,11 @@ public class AbstractDAO<T> {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @param t
+     */
     public void update(T t)
     {
         PreparedStatement statement = null;
@@ -231,6 +266,12 @@ public class AbstractDAO<T> {
         }
         return ;
     }
+
+    /**
+     *
+     * @param list
+     * @return tabela de tip JTable
+     */
     public JTable createTable(ArrayList<T> list)
     {
         JTable table;
@@ -271,6 +312,11 @@ public class AbstractDAO<T> {
         JTable tablee = new JTable(myModel);
         return tablee;
     }
+
+    /**
+     *
+     * @return  lista cu rezultatul interogarii
+     */
     public ArrayList<T> findAll() {
 
         Connection connection = null;
@@ -302,6 +348,11 @@ public class AbstractDAO<T> {
         }
         return null;
     }
+
+    /**
+     *
+     * @param id - reprezinta id-ul intrarii care va trebui stearsa
+     */
     public void stergere(int id) {
         Connection dbConnection;
         StringBuilder queryBuild ;

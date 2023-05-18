@@ -16,6 +16,11 @@ public class OrderBLL {
     private OrderValidator orderValidator;
     private AbstractDAO<Orders> aDAO;
     private AbstractDAO<Products> productADAO;
+
+    /**
+     *
+     * @param interfataOrder
+     */
     public OrderBLL(InterfataOrder interfataOrder) {
 
         this.interfataOrder=interfataOrder;
@@ -24,6 +29,13 @@ public class OrderBLL {
         productADAO=new AbstractDAO<>(Products.class);
 
     }
+
+    /**
+     * Inserarea unei noi comenzi daca sunt valide datele introduse sau atentionarea printr-un mesaj ca datele
+     *      sunt invalide si inserarea nu poate avea loc. Daca datele introduse sunt corecte,dar comandam un
+     *      numar de produse mai mare decat produsele disponibile in stoc se va afisa un mesaj care sa ne
+     *      atentioneze ca nu sunt destule produse in stoc
+     */
     public void inserareComanda()
     {
         int a;
@@ -50,6 +62,10 @@ public class OrderBLL {
         else   JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                 "inserarea comenzii nu s-a facut !");
     }
+
+    /**
+     * Stergerea unei comenzi
+     */
     public void stergereComanda()
     {
         int a;
@@ -57,6 +73,10 @@ public class OrderBLL {
         int cop=a;
         aDAO.stergere(a);
     }
+
+    /**
+     * Vizualizarea tuturor comenzilor in tabelul din interfata
+     */
     public void vizualizareComenzi()
     {
         JScrollPane vizualizareComenziInterfata;
@@ -75,6 +95,12 @@ public class OrderBLL {
         vizualizareComenziInterfata.setViewportView(table);
         interfataOrder.getContentPane().add(vizualizareComenziInterfata);
     }
+
+    /**
+     *
+     * @param id
+     * @return comanda cu id-ul id
+     */
     public Orders findOrderById(int id) {
         Orders c;
         c = aDAO.findById(id);

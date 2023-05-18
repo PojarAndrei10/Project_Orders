@@ -125,8 +125,6 @@ public class InterfataOrder extends JFrame{
     public String getCantitateTextField() {
         return cantitateTextField.getText().toString();
     }
-
-
     public void butonInapoiListener(ActionListener e) {
         backButton.addActionListener(e);
     }

@@ -13,11 +13,21 @@ public class ClientBLL {
     private InterfataClient interfataClient;
     private ClientValidator clientValidator;
     private AbstractDAO<Clients> aDAO;
+
+    /**
+     *
+     * @param interfataClient
+     */
     public ClientBLL(InterfataClient interfataClient) {
         this.interfataClient=interfataClient;
         clientValidator=new ClientValidator();
         aDAO=new AbstractDAO<>(Clients.class);
     }
+
+    /**
+     * Inserarea unui nou client daca sunt valide datele introduse sau atentionarea printr-un mesaj ca datele
+     * sunt invalide si inserarea nu poate avea loc
+     */
     public void inserareClient()
     {
         int id = interfataClient.getIdTextField();
@@ -34,6 +44,10 @@ public class ClientBLL {
             JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                     "inserarea clientului nu s-a facut !");
     }
+
+    /**
+     * Stergerea unui client
+     */
     public void stergereClient()
     {
         int a;
@@ -41,6 +55,11 @@ public class ClientBLL {
         int cop=a;
         aDAO.stergere(a);
     }
+
+    /**
+     * Update-ul unui nou client daca sunt valide datele modificate sau atentionarea printr-un mesaj ca datele modificate
+     *       sunt invalide si update-ul nu poate avea loc
+     */
     public void updateClient()
     {
         int id = interfataClient.getIdTextField();
@@ -57,6 +76,10 @@ public class ClientBLL {
             JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                     "update-ul clientului nu s-a facut !");
     }
+
+    /**
+     * Vizualizarea tuturor clientilor in tabelul din interfata
+     */
     public void vizualizareClienti()
     {
         JScrollPane vizualizareClientiInterfata;
@@ -77,9 +100,9 @@ public class ClientBLL {
     }
 
     /**
-     * JE E POJI
+     *
      * @param id
-     * @return clientul cu id-ul respectiv
+     * @return clientul cu id-ul id
      */
     public Clients findClientById(int id) {
         Clients c;

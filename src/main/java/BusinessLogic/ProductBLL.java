@@ -14,11 +14,21 @@ public class ProductBLL {
     private InterfataProduct interfataProduct;
     private ProductValidator productValidator;
     private AbstractDAO<Products> aDAO;
+
+    /**
+     *
+     * @param interfataProduct
+     */
     public ProductBLL(InterfataProduct interfataProduct) {
         this.interfataProduct=interfataProduct;
         productValidator=new ProductValidator();
         aDAO=new AbstractDAO<>(Products.class);
     }
+
+    /**
+     * Inserarea unui nou produs daca sunt valide datele introduse sau atentionarea printr-un mesaj ca datele
+     *   sunt invalide si inserarea nu poate avea loc
+     */
     public void inserareProdus()
     {
         int id = interfataProduct.getIdTextField();
@@ -31,6 +41,10 @@ public class ProductBLL {
         else JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                 "inserarea produsului nu s-a facut !");
     }
+
+    /**
+     * Stergerea unui produs
+     */
     public void stergereProdus()
     {
         int a;
@@ -39,7 +53,10 @@ public class ProductBLL {
         aDAO.stergere(a);
     }
 
-
+    /**
+     * Update-ul unui nou produs daca sunt valide datele modificate sau atentionarea printr-un mesaj ca datele modificate
+     *      sunt invalide si update-ul nu poate avea loc
+     */
     public void updateProdus()
     {
         int id = interfataProduct.getIdTextField();
@@ -52,6 +69,10 @@ public class ProductBLL {
         else JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                 "update-ul comenzii nu s-a facut ");
     }
+
+    /**
+     * Vizualizarea tuturor produselor in tabelul din interfata
+     */
     public void vizualizareProduse()
     {
         JScrollPane vizualizareProduseInterfata;
@@ -70,6 +91,12 @@ public class ProductBLL {
         vizualizareProduseInterfata.setViewportView(table);
         interfataProduct.getContentPane().add(vizualizareProduseInterfata);
     }
+
+    /**
+     *
+     * @param id
+     * @return produsul cu id-ul id
+     */
     public Products findProductById(int id) {
         Products p;
         p = aDAO.findById(id);

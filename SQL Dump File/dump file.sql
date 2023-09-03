@@ -61,7 +61,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,2),(2,5,2,2),(3,7,4,6),(4,2,5,2),(5,3,2,1),(6,4,6,5),(7,6,10,2),(8,6,11,1),(9,6,12,1);
+INSERT INTO `orders` VALUES (1,1,1,2),(2,5,2,2),(3,7,4,6),(4,2,5,2),(5,3,2,1),(6,4,6,5),(7,6,10,2),(8,6,11,1),(9,6,12,1),(10,4,14,10),(11,5,9,1);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,13 +86,9 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'canapea',700,1),(2,'coltar',1000,5),(3,'cabina dus',950.5,3),(4,'candelabre',300,10),(5,'mese',250,5),(6,'scaune',150.5,6),(7,'mobila ',2000,4),(8,'birou',1000.75,1),(9,'paturi',1200,2),(10,'chiuvete',400.75,3),(11,'hote',750,2),(12,'cuptoare electrice',1600,2),(13,'dulap',800,1),(14,'sifonier',1100.6,6);
+INSERT INTO `products` VALUES (1,'canapea',700,5),(2,'coltar',1000,3),(3,'cabina dus',950.5,0),(4,'candelabre',300,10),(5,'mese',250,10),(6,'scaune',150.5,6),(7,'mobila ',2000,3),(8,'birou',1000.75,1),(9,'paturi',1200,7),(10,'chiuvete',400.75,3),(11,'hote',750,2),(12,'cuptoare electrice',1600,2),(13,'dulap',800,1),(14,'sifonier',1100.6,5);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'warehouse'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -103,4 +99,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-18  9:40:30
+-- Dump completed on 2023-09-03 18:09:14

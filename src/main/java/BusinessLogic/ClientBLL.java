@@ -13,7 +13,6 @@ public class ClientBLL {
     private InterfataClient interfataClient;
     private ClientValidator clientValidator;
     private AbstractDAO<Clients> aDAO;
-
     /**
      *
      * @param interfataClient

@@ -16,3 +16,9 @@ Pretul unei bucati:1100.6
 Cantitatea comandata :10
 Pretul total:11006.0
 ---------------------------------------------------
+Id-ul comenzii:11
+Produsul comandat:paturi
+Pretul unei bucati:1200.0
+Cantitatea comandata :1
+Pretul total:1200.0
+---------------------------------------------------

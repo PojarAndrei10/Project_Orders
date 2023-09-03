@@ -143,8 +143,7 @@ public class OrderBLL {
             bufferedWriter.newLine();
             bufferedWriter.write("---------------------------------------------------");
             bufferedWriter.newLine();
-
-
+            
             bufferedWriter.close();
 
         }

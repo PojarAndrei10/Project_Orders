@@ -5,7 +5,6 @@ public class Clients {
     private String nume;
     private String prenume;
     private String telefon;
-
     public Clients(int clientId, String nume, String prenume, String numarTelefon)
     {
         this.clientId=clientId;

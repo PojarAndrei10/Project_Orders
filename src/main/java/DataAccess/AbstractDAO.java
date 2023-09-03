@@ -312,7 +312,6 @@ public class AbstractDAO<T> {
         JTable tablee = new JTable(myModel);
         return tablee;
     }
-
     /**
      *
      * @return  lista cu rezultatul interogarii

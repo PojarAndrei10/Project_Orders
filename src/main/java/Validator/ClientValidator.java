@@ -1,7 +1,6 @@
 package Validator;
 
 import Model.Clients;
-
 public class ClientValidator {
     /**
      *

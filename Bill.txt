@@ -28,3 +28,9 @@ Pretul unei bucati:2000.0
 Cantitatea comandata :1
 Pretul total:2000.0
 ---------------------------------------------------
+Id-ul comenzii:12
+Produsul comandat:mobila 
+Pretul unei bucati:2000.0
+Cantitatea comandata :1
+Pretul total:2000.0
+---------------------------------------------------

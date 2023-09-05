@@ -5,46 +5,45 @@ import Model.Products;
 public class ProductValidator {
     /**
      *
-     * @param nume
+     * @param name
      * @return true daca numele e valid sau false daca numele nu e valid
      */
-    public boolean validareNume(String nume)
+    public boolean nameValidation(String name)
     {
-        return !nume.isEmpty() && nume.matches("[A-Za-z]+");
+        return !name.isEmpty() && name.matches("[A-Za-z]+");
     }
 
     /**
      *
-     * @param pret
+     * @param price
      * @return true daca pretul produsului e valid(>0) sau false altfel
      */
-    public boolean validarePret(float pret)
+    public boolean priceValidation(float price)
     {
-        return pret>0;
+        return price>0;
     }
 
     /**
      *
-     * @param produsInStoc
+     * @param productsInStock
      * @return true daca stocul produsului e valid(>0) sau false altfel
      */
-    public boolean validareStoc(int produsInStoc)
+    public boolean stockValidation(int productsInStock)
     {
-        return produsInStoc > 0;
+        return productsInStock > 0;
     }
-
     /**
      *
      * @param product
      * @return "Corect" daca datele introduse sunt corecte sau "Incorect" altfel
      */
-    public String validareProduse(Products product)
+    public String productValidation(Products product)
     {
-        if (! validareNume(product.getNume()))
+        if (! nameValidation(product.getNume()))
             return "Incorect";
-        if (! validarePret(product.getPret()))
+        if (! priceValidation(product.getPret()))
             return "Incorect";
-        if (! validareStoc(product.getProduseInStoc()))
+        if (! stockValidation(product.getProduseInStoc()))
             return "Incorect";
         return "Corect";
     }

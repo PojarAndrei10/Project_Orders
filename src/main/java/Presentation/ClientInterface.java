@@ -4,74 +4,74 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class InterfataClient extends JFrame {
+public class ClientInterface extends JFrame {
     private JFrame frame = new JFrame();
     private JPanel panel = new JPanel();
     private JLabel id = new JLabel();
-    private JLabel nume = new JLabel();
-    private JLabel prenume = new JLabel();
-    private JLabel numarTelefon = new JLabel();
+    private JLabel lastName = new JLabel();
+    private JLabel firstName = new JLabel();
+    private JLabel phoneNumber = new JLabel();
     private TextField idTextField = new TextField();
-    private TextField numeTextField = new TextField();
-    private TextField prenumeTextField = new TextField();
-    private TextField telefonTextField = new TextField();
+    private TextField lastNameTextField = new TextField();
+    private TextField firstNameTextField = new TextField();
+    private TextField phoneTextField = new TextField();
     private JButton insertButton = new JButton();
     private JButton deleteButton = new JButton();
     private JButton updateButton = new JButton();
-    private JButton vizualizareButton = new JButton();
+    private JButton viewButton = new JButton();
     private JButton backButton = new JButton();
     private JButton exitButton=new JButton();
 
-    public void gestionareLabel() {
+    public void labelManagement() {
         id.setBounds(40, 110, 200, 30);
         id.setText("Id-ul clientului:");
         id.setFont(new Font("Serif", Font.ITALIC, 16));
 
-        nume.setBounds(40, 150, 200, 30);
-        nume.setText("Nume client");
-        nume.setFont(new Font("Serif", Font.ITALIC, 16));
+        lastName.setBounds(40, 150, 200, 30);
+        lastName.setText("Nume client");
+        lastName.setFont(new Font("Serif", Font.ITALIC, 16));
 
-        prenume.setBounds(40, 190, 200, 30);
-        prenume.setText("Prenume client");
-        prenume.setFont(new Font("Serif", Font.ITALIC, 16));
+        firstName.setBounds(40, 190, 200, 30);
+        firstName.setText("Prenume client");
+        firstName.setFont(new Font("Serif", Font.ITALIC, 16));
 
-        numarTelefon.setBounds(40, 230, 200, 30);
-        numarTelefon.setText("Numar telefon");
-        numarTelefon.setFont(new Font("Serif", Font.ITALIC, 16));
+        phoneNumber.setBounds(40, 230, 200, 30);
+        phoneNumber.setText("Numar telefon");
+        phoneNumber.setFont(new Font("Serif", Font.ITALIC, 16));
 
         panel.add(id);
-        panel.add(nume);
-        panel.add(prenume);
-        panel.add(numarTelefon);
+        panel.add(lastName);
+        panel.add(firstName);
+        panel.add(phoneNumber);
     }
-    public void gestionareTextField()
+    public void textFieldManagement()
     {
 
             idTextField.setBounds(250, 110, 250, 30);
         panel.add(idTextField);
 
-            numeTextField.setBounds(250, 150, 250, 30);
-        panel.add(numeTextField);
+            lastNameTextField.setBounds(250, 150, 250, 30);
+        panel.add(lastNameTextField);
 
-            prenumeTextField.setBounds(250,190,250,30);
-        panel.add(prenumeTextField);
+            firstNameTextField.setBounds(250,190,250,30);
+        panel.add(firstNameTextField);
 
-            telefonTextField.setBounds(250,230,250,30);
-        panel.add(telefonTextField);
+            phoneTextField.setBounds(250,230,250,30);
+        panel.add(phoneTextField);
 
         }
-        public void gestionareButoane()
+        public void buttonManagement()
         {
             backButton.setBounds(50, 280, 200, 50);
             backButton.setText("INAPOI");
             backButton.setBackground(new Color(72, 99, 182));
             panel.add(backButton);
 
-            vizualizareButton.setBounds(270, 280, 200, 50);
-            vizualizareButton.setText("Vizualizare clienti");
-            vizualizareButton.setBackground(new Color(72, 99, 182));
+            viewButton.setBounds(270, 280, 200, 50);
+            viewButton.setText("Vizualizare clienti");
+            viewButton.setBackground(new Color(72, 99, 182));
 
-            panel.add(vizualizareButton);
+            panel.add(viewButton);
 
             insertButton.setBounds(490, 280, 220, 50);
             insertButton.setText("Inserare client");
@@ -93,7 +93,7 @@ public class InterfataClient extends JFrame {
             exitButton.setBackground(new Color(72, 99, 182));
             panel.add(exitButton);
         }
-        public InterfataClient() {
+        public ClientInterface() {
         this.setTitle("PAGINA PENTRU CLIENTI");
             panel.setBackground(new Color(255, 255, 182));
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,9 +101,9 @@ public class InterfataClient extends JFrame {
             this.getContentPane().add(panel, BorderLayout.CENTER);
             panel.setLayout(null);
 
-            gestionareLabel();
-            gestionareTextField();
-            gestionareButoane();
+            labelManagement();
+            textFieldManagement();
+            buttonManagement();
 
             this.setContentPane(panel);
             this.setVisible(true);
@@ -111,31 +111,31 @@ public class InterfataClient extends JFrame {
     public int getIdTextField() {
         return Integer.parseInt(idTextField.getText());
     }
-    public String getNumeTextField() {
-        return numeTextField.getText().toString();
+    public String getLastNameTextField() {
+        return lastNameTextField.getText().toString();
     }
-    public String getPrenumeTextField() {
-        return prenumeTextField.getText().toString();
+    public String getFirstNameTextField() {
+        return firstNameTextField.getText().toString();
     }
-    public String getTelefonTextField() {
-        return telefonTextField.getText().toString();
+    public String getPhoneTextField() {
+        return phoneTextField.getText().toString();
     }
 
-    public void butonInapoiListener(ActionListener e) {
+    public void backButtonListener(ActionListener e) {
         backButton.addActionListener(e);
     }
-    public void butonVizualizareListener(ActionListener e) {
-        vizualizareButton.addActionListener(e);
+    public void viewButtonListener(ActionListener e) {
+        viewButton.addActionListener(e);
     }
-    public void butonInserareListener(ActionListener e) {
+    public void insertButtonListener(ActionListener e) {
         insertButton.addActionListener(e);
     }
-    public void butonStergereListener(ActionListener e) {
+    public void deleteButtonListener(ActionListener e) {
         deleteButton.addActionListener(e);
     }
-    public void butonUpdateListener(ActionListener e) {
+    public void updateButtonListener(ActionListener e) {
         updateButton.addActionListener(e);
     }
-    public void butonExitListener(ActionListener e) {exitButton.addActionListener(e);}
+    public void exitButtonListener(ActionListener e) {exitButton.addActionListener(e);}
 }
 

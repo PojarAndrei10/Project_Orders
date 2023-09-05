@@ -5,57 +5,57 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class ClientController {
     private ClientBLL cBLL;
-    private InterfataClient interfataClient;
-    public ClientController(InterfataClient interfataClient)
+    private ClientInterface clientInterface;
+    public ClientController(ClientInterface clientInterface)
     {
-        cBLL=new ClientBLL(interfataClient);
-        this.interfataClient=interfataClient;
-        interfataClient.butonInserareListener(new butonInserare());
-        interfataClient.butonStergereListener(new butonStergere());
-        interfataClient.butonInapoiListener(new butonInapoi());
-        interfataClient.butonUpdateListener(new butonUpdate());
-        interfataClient.butonVizualizareListener(new butonVizualizare());
-        interfataClient.butonExitListener(new butonExit());
+        cBLL=new ClientBLL(clientInterface);
+        this.clientInterface=clientInterface;
+        clientInterface.insertButtonListener(new insertButton());
+        clientInterface.deleteButtonListener(new deleteButton());
+        clientInterface.backButtonListener(new backButton());
+        clientInterface.updateButtonListener(new updateButton());
+        clientInterface.viewButtonListener(new viewButton());
+        clientInterface.exitButtonListener(new exitButton());
     }
-    public class butonInserare implements ActionListener
+    public class insertButton implements ActionListener
     {
         public void actionPerformed(ActionEvent e) {
-            cBLL.inserareClient();
+            cBLL.insertClient();
         }
     }
-    public class butonStergere implements ActionListener
+    public class deleteButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cBLL.stergereClient();
+            cBLL.deleteClient();
         }
     }
-    public class butonInapoi implements ActionListener
+    public class backButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-      InterfataPrincipala interfataPrincipala=new InterfataPrincipala();
-      InterfataPrincipalaController interfataPrincipalaController;
-      interfataPrincipalaController=new InterfataPrincipalaController(interfataPrincipala);
-      interfataPrincipala.setVisible(true);
-      interfataClient.setVisible(false);
+      MainInterface mainInterface=new MainInterface();
+      MainInterfaceController mainInterfaceController;
+            mainInterfaceController=new MainInterfaceController(mainInterface);
+            mainInterface.setVisible(true);
+      clientInterface.setVisible(false);
         }
     }
-    public class butonUpdate implements ActionListener
+    public class updateButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
             cBLL.updateClient();
         }
     }
-    public class butonVizualizare implements ActionListener
+    public class viewButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cBLL.vizualizareClienti();
+            cBLL.clientView();
         }
     }
-    public class butonExit implements ActionListener
+    public class exitButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {

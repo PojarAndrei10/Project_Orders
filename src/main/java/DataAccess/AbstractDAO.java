@@ -1,7 +1,6 @@
 package DataAccess;
 
 import Connection.ConnectionF;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.*;
@@ -22,10 +21,8 @@ public class AbstractDAO<T> {
     protected static final Logger LOGGER = Logger.getLogger(AbstractDAO.class.getName());
     @SuppressWarnings("unchecked")
     public AbstractDAO(Class<T> type) {
-
         this.type = type;
     }
-
     /**
      *
      * @param field
@@ -40,10 +37,8 @@ public class AbstractDAO<T> {
         stringBuilder.append(" FROM ");
         stringBuilder.append(type.getSimpleName());
         stringBuilder.append(" WHERE ").append(field).append("=").append(a);
-
         return stringBuilder.toString();
     }
-
     /**
      *
      * @param resultSet - reprezinta rezultatul interogarii
@@ -105,7 +100,6 @@ public class AbstractDAO<T> {
         }
         return list;
     }
-
     /**
      *
      * @param id
@@ -135,7 +129,6 @@ public class AbstractDAO<T> {
         }
         return null;
     }
-
     /**
      *
      * @param type
@@ -156,12 +149,11 @@ public class AbstractDAO<T> {
 
         return tableName;
     }
-
     /**
      *
      * @param t
      */
-    public void inserare(T t)
+    public void insert(T t)
     {
         PreparedStatement preparedStatement = null;
         Connection dataBase;
@@ -211,7 +203,6 @@ public class AbstractDAO<T> {
             e.printStackTrace();
         }
     }
-
     /**
      *
      * @param t
@@ -266,7 +257,6 @@ public class AbstractDAO<T> {
         }
         return ;
     }
-
     /**
      *
      * @param list
@@ -347,12 +337,11 @@ public class AbstractDAO<T> {
         }
         return null;
     }
-
     /**
      *
      * @param id - reprezinta id-ul intrarii care va trebui stearsa
      */
-    public void stergere(int id) {
+    public void delete(int id) {
         Connection dbConnection;
         StringBuilder queryBuild ;
         queryBuild = new StringBuilder();

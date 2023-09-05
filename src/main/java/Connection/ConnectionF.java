@@ -22,7 +22,6 @@ public class ConnectionF {
             e.printStackTrace();
         }
     }
-
     private Connection createConnection() {
         Connection connection = null;
         try {

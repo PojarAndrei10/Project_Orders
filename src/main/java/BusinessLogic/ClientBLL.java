@@ -2,102 +2,96 @@ package BusinessLogic;
 
 import DataAccess.AbstractDAO;
 import Model.Clients;
-import Presentation.InterfataClient;
+import Presentation.ClientInterface;
 import Validator.ClientValidator;
-
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.util.NoSuchElementException;
 public class ClientBLL {
-    private InterfataClient interfataClient;
+    private ClientInterface clientInterface;
     private ClientValidator clientValidator;
     private AbstractDAO<Clients> aDAO;
     /**
      *
-     * @param interfataClient
+     * @param clientInterface
      */
-    public ClientBLL(InterfataClient interfataClient) {
-        this.interfataClient=interfataClient;
+    public ClientBLL(ClientInterface clientInterface) {
+        this.clientInterface=clientInterface;
         clientValidator=new ClientValidator();
         aDAO=new AbstractDAO<>(Clients.class);
     }
-
     /**
      * Inserarea unui nou client daca sunt valide datele introduse sau atentionarea printr-un mesaj ca datele
      * sunt invalide si inserarea nu poate avea loc
      */
-    public void inserareClient()
+    public void insertClient()
     {
-        int id = interfataClient.getIdTextField();
-        String nume = interfataClient.getNumeTextField();
-        String prenume = interfataClient.getPrenumeTextField();
-        String telefon = interfataClient.getTelefonTextField();
-        Clients c;
-        c=new Clients(id,nume,prenume,telefon);
-        if (clientValidator.validareClient(c).equals("Corect"))
+        int id = clientInterface.getIdTextField();
+        String lastName = clientInterface.getLastNameTextField();
+        String firstName = clientInterface.getFirstNameTextField();
+        String phone = clientInterface.getPhoneTextField();
+        Clients clients;
+        clients=new Clients(id,lastName,firstName,phone);
+        if (clientValidator.clientValidation(clients).equals("Corect"))
         {
-            aDAO.inserare(c);
+            aDAO.insert(clients);
         }
         else
             JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                     "inserarea clientului nu s-a facut !");
     }
-
     /**
      * Stergerea unui client
      */
-    public void stergereClient()
+    public void deleteClient()
     {
         int a;
-        a=interfataClient.getIdTextField();
+        a=clientInterface.getIdTextField();
         int cop=a;
-        aDAO.stergere(a);
+        aDAO.delete(a);
     }
-
     /**
      * Update-ul unui nou client daca sunt valide datele modificate sau atentionarea printr-un mesaj ca datele modificate
      *       sunt invalide si update-ul nu poate avea loc
      */
     public void updateClient()
     {
-        int id = interfataClient.getIdTextField();
-        String nume = interfataClient.getNumeTextField();
-        String prenume = interfataClient.getPrenumeTextField();
-        String telefon = interfataClient.getTelefonTextField();
-        Clients c;
-        c=new Clients(id,nume,prenume,telefon);
-        if (clientValidator.validareClient(c).equals("Corect"))
+        int id = clientInterface.getIdTextField();
+        String lastName = clientInterface.getLastNameTextField();
+        String firstName = clientInterface.getFirstNameTextField();
+        String phone = clientInterface.getPhoneTextField();
+        Clients clients;
+        clients=new Clients(id,lastName,firstName,phone);
+        if (clientValidator.clientValidation(clients).equals("Corect"))
         {
-            aDAO.update(c);
+            aDAO.update(clients);
         }
         else
             JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                     "update-ul clientului nu s-a facut !");
     }
-
     /**
      * Vizualizarea tuturor clientilor in tabelul din interfata
      */
-    public void vizualizareClienti()
+    public void clientView()
     {
-        JScrollPane vizualizareClientiInterfata;
-        vizualizareClientiInterfata=new JScrollPane();
+        JScrollPane viewClientsInTheInterface;
+        viewClientsInTheInterface=new JScrollPane();
         JTable table=new JTable();
-        ArrayList<Clients> clienti;
-        clienti=aDAO.findAll();
-        System.out.println(clienti);
+        ArrayList<Clients> clients;
+        clients=aDAO.findAll();
+        System.out.println(clients);
         System.out.println(" ");
-        vizualizareClientiInterfata.setBounds(800,50,300,300);
-        vizualizareClientiInterfata.setBackground(new Color(210,191,191));
-        vizualizareClientiInterfata.setToolTipText("Tabel clienti");
-        table=aDAO.createTable(clienti);
+        viewClientsInTheInterface.setBounds(800,50,300,300);
+        viewClientsInTheInterface.setBackground(new Color(210,191,191));
+        viewClientsInTheInterface.setToolTipText("Tabel clienti");
+        table=aDAO.createTable(clients);
         table.setEnabled(true);
         table.setVisible(true);
-        vizualizareClientiInterfata.setViewportView(table);
-        interfataClient.getContentPane().add(vizualizareClientiInterfata);
+        viewClientsInTheInterface.setViewportView(table);
+        clientInterface.getContentPane().add(viewClientsInTheInterface);
     }
-
     /**
      *
      * @param id

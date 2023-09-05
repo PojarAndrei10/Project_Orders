@@ -1,13 +1,10 @@
 package BusinessLogic;
 
 import DataAccess.AbstractDAO;
-import Model.Clients;
 import Model.Orders;
 import Model.Products;
-import Presentation.InterfataClient;
-import Presentation.InterfataOrder;
+import Presentation.OrderInterface;
 import Validator.OrderValidator;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedWriter;
@@ -17,50 +14,45 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class OrderBLL {
-    private InterfataOrder interfataOrder;
+    private OrderInterface orderInterface;
     private OrderValidator orderValidator;
     private AbstractDAO<Orders> aDAO;
     private AbstractDAO<Products> productADAO;
-
     /**
      *
-     * @param interfataOrder
+     * @param orderInterface
      */
-    public OrderBLL(InterfataOrder interfataOrder) {
-
-        this.interfataOrder=interfataOrder;
+    public OrderBLL(OrderInterface orderInterface) {
+        this.orderInterface=orderInterface;
         orderValidator=new OrderValidator();
         aDAO=new AbstractDAO<>(Orders.class);
         productADAO=new AbstractDAO<>(Products.class);
-
     }
-
     /**
      * Inserarea unei noi comenzi daca sunt valide datele introduse sau atentionarea printr-un mesaj ca datele
      *      sunt invalide si inserarea nu poate avea loc. Daca datele introduse sunt corecte,dar comandam un
      *      numar de produse mai mare decat produsele disponibile in stoc se va afisa un mesaj care sa ne
      *      atentioneze ca nu sunt destule produse in stoc
      */
-    public void inserareComanda()
+    public void insertOrder()
     {
         int a;
         Products products;
-        int id = interfataOrder.getIdTextField();
-        int clientID = Integer.parseInt(interfataOrder.getClientIDTextField());
-        int productID = Integer.parseInt(interfataOrder.getProductIDTextField());
-        int cantitate = Integer.parseInt(interfataOrder.getCantitateTextField());
-        Orders o=new Orders(id,clientID,productID,cantitate);
-        if(orderValidator.validareComenzi(o).equals("Corect"))
+        int id = orderInterface.getIdTextField();
+        int clientID = Integer.parseInt(orderInterface.getClientIDTextField());
+        int productID = Integer.parseInt(orderInterface.getProductIDTextField());
+        int quantity = Integer.parseInt(orderInterface.getQuantityTextField());
+        Orders o=new Orders(id,clientID,productID,quantity);
+        if(orderValidator.orderValidation(o).equals("Corect"))
         {
-            a=Integer.parseInt(interfataOrder.getProductIDTextField());
+            a=Integer.parseInt(orderInterface.getProductIDTextField());
             products=productADAO.findById(a);
-            if (products.getProduseInStoc()>= Integer.parseInt(interfataOrder.getCantitateTextField()) )
+            if (products.getProduseInStoc()>= Integer.parseInt(orderInterface.getQuantityTextField()) )
             {
                products.setProduseInStoc(products.getProduseInStoc()-o.getCantitate());
                productADAO.update(products);
-               aDAO.inserare(o);
-               //Creare chitantei
-               creareBill(o,products);
+               aDAO.insert(o);
+               createBill(o,products);
             }
             else
                 JOptionPane.showMessageDialog(null,"Nu sunt destule " +
@@ -69,40 +61,37 @@ public class OrderBLL {
         else   JOptionPane.showMessageDialog(null,"Nu ati introdus date corecte," +
                 "inserarea comenzii nu s-a facut !");
     }
-
     /**
      * Stergerea unei comenzi
      */
-    public void stergereComanda()
+    public void deleteOrder()
     {
         int a;
-        a=interfataOrder.getIdTextField();
+        a=orderInterface.getIdTextField();
         int cop=a;
-        aDAO.stergere(a);
+        aDAO.delete(a);
     }
-
     /**
      * Vizualizarea tuturor comenzilor in tabelul din interfata
      */
-    public void vizualizareComenzi()
+    public void orderView()
     {
-        JScrollPane vizualizareComenziInterfata;
-        vizualizareComenziInterfata=new JScrollPane();
+        JScrollPane viewOrderInTheInterface;
+        viewOrderInTheInterface=new JScrollPane();
         JTable table=new JTable();
         ArrayList<Orders> comenzi;
         comenzi=aDAO.findAll();
         System.out.println(comenzi);
         System.out.println(" ");
-        vizualizareComenziInterfata.setBounds(800,50,300,300);
-        vizualizareComenziInterfata.setBackground(new Color(210,191,191));
-        vizualizareComenziInterfata.setToolTipText("Tabel comenzi");
+        viewOrderInTheInterface.setBounds(800,50,300,300);
+        viewOrderInTheInterface.setBackground(new Color(210,191,191));
+        viewOrderInTheInterface.setToolTipText("Tabel comenzi");
         table=aDAO.createTable(comenzi);
         table.setEnabled(true);
         table.setVisible(true);
-        vizualizareComenziInterfata.setViewportView(table);
-        interfataOrder.getContentPane().add(vizualizareComenziInterfata);
+        viewOrderInTheInterface.setViewportView(table);
+        orderInterface.getContentPane().add(viewOrderInTheInterface);
     }
-
     /**
      *
      * @param id
@@ -118,7 +107,6 @@ public class OrderBLL {
         }
         return c;
     }
-
     /**
      *
      * @param order
@@ -126,10 +114,10 @@ public class OrderBLL {
      * Creaza chitanta in care va aparea id-ul comenzii,numele produsului,cantitatea comandata si pretul care trebuie
      * sa il plateasca clientul
      */
-    public void creareBill(Orders order, Products product)
+    public void createBill(Orders order, Products product)
     {
         try{
-            FileWriter fileWriter = new FileWriter("Chitanta.txt", true);
+            FileWriter fileWriter = new FileWriter("Bill.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write("Id-ul comenzii:"+order.getId());
             bufferedWriter.newLine();
@@ -145,7 +133,6 @@ public class OrderBLL {
             bufferedWriter.newLine();
 
             bufferedWriter.close();
-
         }
         catch (IOException e)
         {

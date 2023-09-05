@@ -1,25 +1,22 @@
 package Presentation;
 
-import Presentation.ClientController;
-import Presentation.InterfataClient;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfataPrincipalaController {
-    private InterfataPrincipala interfataPrincipala;
-    public InterfataPrincipalaController(InterfataPrincipala interfataPrincipala)
+public class MainInterfaceController {
+    private MainInterface mainInterface;
+    public MainInterfaceController(MainInterface mainInterface)
     {
-        this.interfataPrincipala=interfataPrincipala;
-        interfataPrincipala.paginaClientListener(new clientPage());
-        interfataPrincipala.paginaOrderListener(new orderPage());
-        interfataPrincipala.paginaProductListener(new productPage());
+        this.mainInterface=mainInterface;
+        mainInterface.clientsPageListener(new clientPage());
+        mainInterface.ordersPageListener(new orderPage());
+        mainInterface.productsPageListener(new productPage());
     }
     public class clientPage implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            InterfataClient ic=new InterfataClient();
+            ClientInterface ic=new ClientInterface();
             ClientController ipc;
             ipc=new ClientController(ic);
             ic.setVisible(true);
@@ -29,7 +26,7 @@ public class InterfataPrincipalaController {
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            InterfataOrder io=new InterfataOrder();
+            OrderInterface io=new OrderInterface();
             OrderController oc;
             oc=new OrderController(io);
             io.setVisible(true);
@@ -39,7 +36,7 @@ public class InterfataPrincipalaController {
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            InterfataProduct ip=new InterfataProduct();
+            ProductInterface ip=new ProductInterface();
             ProductController pc;
             pc=new ProductController(ip);
             ip.setVisible(true);

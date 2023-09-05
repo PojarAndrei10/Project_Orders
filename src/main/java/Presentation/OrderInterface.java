@@ -4,27 +4,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class InterfataOrder extends JFrame{
+public class OrderInterface extends JFrame{
     private JFrame frame = new JFrame();
     private JPanel panel = new JPanel();
     private JLabel id = new JLabel();
     private JLabel clientID = new JLabel();
     private JLabel productID = new JLabel();
-    private JLabel cantitate = new JLabel();
-    private JLabel numarTelefon = new JLabel();
+    private JLabel quantity = new JLabel();
+    private JLabel phoneNumber = new JLabel();
     private TextField idTextField = new TextField();
     private TextField clientIDTextField = new TextField();
     private TextField productIDTextField = new TextField();
-    private TextField cantitateTextField = new TextField();
+    private TextField quantityTextField = new TextField();
 
     private JButton insertButton = new JButton();
     private JButton deleteButton = new JButton();
     ///private JButton updateButton = new JButton();
-    private JButton vizualizareButton = new JButton();
+    private JButton viewButton = new JButton();
     private JButton backButton = new JButton();
     private JButton exitButton=new JButton();
 
-    public void gestionareLabel() {
+    public void labelManagement() {
         id.setBounds(40, 110, 200, 30);
         id.setText("Id comanda");
         id.setFont(new Font("Serif", Font.ITALIC, 16));
@@ -37,16 +37,16 @@ public class InterfataOrder extends JFrame{
         productID.setText("Id produs");
         productID.setFont(new Font("Serif", Font.ITALIC, 16));
 
-        cantitate.setBounds(40, 230, 200, 30);
-        cantitate.setText("Cantitate dorita");
-        cantitate.setFont(new Font("Serif", Font.ITALIC, 16));
+        quantity.setBounds(40, 230, 200, 30);
+        quantity.setText("Cantitate dorita");
+        quantity.setFont(new Font("Serif", Font.ITALIC, 16));
 
         panel.add(id);
         panel.add(clientID);
         panel.add(productID);
-        panel.add(cantitate);
+        panel.add(quantity);
     }
-    public void gestionareTextField()
+    public void textFieldManagement()
     {
 
         idTextField.setBounds(250, 110, 250, 30);
@@ -58,21 +58,21 @@ public class InterfataOrder extends JFrame{
         productIDTextField.setBounds(250,190,250,30);
         panel.add(productIDTextField);
 
-        cantitateTextField.setBounds(250,230,250,30);
-        panel.add(cantitateTextField);
+        quantityTextField.setBounds(250,230,250,30);
+        panel.add(quantityTextField);
 
     }
-    public void gestionareButoane()
+    public void buttonManagement()
     {
         backButton.setBounds(50, 280, 200, 50);
         backButton.setText("INAPOI");
         backButton.setBackground(new Color(72, 99, 182));
         panel.add(backButton);
 
-        vizualizareButton.setBounds(270, 280, 200, 50);
-        vizualizareButton.setText("Vizualizare comenzi");
-        vizualizareButton.setBackground(new Color(72, 99, 182));
-        panel.add(vizualizareButton);
+        viewButton.setBounds(270, 280, 200, 50);
+        viewButton.setText("Vizualizare comenzi");
+        viewButton.setBackground(new Color(72, 99, 182));
+        panel.add(viewButton);
 
         insertButton.setBounds(490, 280, 220, 50);
         insertButton.setText("Inserare comanda");
@@ -94,7 +94,7 @@ public class InterfataOrder extends JFrame{
         exitButton.setBackground(new Color(72, 99, 182));
         panel.add(exitButton);
     }
-    public InterfataOrder() {
+    public OrderInterface() {
         this.setTitle("PAGINA PENTRU COMENZI");
         panel.setBackground(new Color(255, 255, 182));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,9 +102,9 @@ public class InterfataOrder extends JFrame{
         this.getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
-        gestionareLabel();
-        gestionareTextField();
-        gestionareButoane();
+        labelManagement();
+        textFieldManagement();
+        buttonManagement();
 
         this.setContentPane(panel);
         this.setVisible(true);
@@ -117,24 +117,22 @@ public class InterfataOrder extends JFrame{
     public String getClientIDTextField() {
         return clientIDTextField.getText().toString();
     }
-
     public String getProductIDTextField() {
         return productIDTextField.getText().toString();
     }
-
-    public String getCantitateTextField() {
-        return cantitateTextField.getText().toString();
+    public String getQuantityTextField() {
+        return quantityTextField.getText().toString();
     }
-    public void butonInapoiListener(ActionListener e) {
+    public void backButtonListener(ActionListener e) {
         backButton.addActionListener(e);
     }
-    public void butonVizualizareListener(ActionListener e) {
-        vizualizareButton.addActionListener(e);
+    public void viewButtonListener(ActionListener e) {
+        viewButton.addActionListener(e);
     }
-    public void butonInserareListener(ActionListener e) {
+    public void insertButtonListener(ActionListener e) {
         insertButton.addActionListener(e);
     }
-    public void butonStergereListener(ActionListener e) {
+    public void deleteButtonListener(ActionListener e) {
         deleteButton.addActionListener(e);
     }
 
@@ -142,6 +140,6 @@ public class InterfataOrder extends JFrame{
    /// public void addUpdateListener(ActionListener e) {
        /// updateButton.addActionListener(e);
   ///  }
-    public void butonExitListener(ActionListener e) {exitButton.addActionListener(e);}
+    public void exitButtonListener(ActionListener e) {exitButton.addActionListener(e);}
 
 }

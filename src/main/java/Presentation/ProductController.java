@@ -1,8 +1,6 @@
 package Presentation;
 
 import BusinessLogic.ProductBLL;
-import Presentation.InterfataPrincipala;
-import Presentation.InterfataPrincipalaController;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -10,58 +8,58 @@ import java.awt.event.ActionEvent;
 
 public class ProductController {
     private ProductBLL pBLL;
-    private final InterfataProduct interfataProduct;
-    public ProductController(InterfataProduct interfataProduct)
+    private final ProductInterface productInterface;
+    public ProductController(ProductInterface productInterface)
     {
-        this.interfataProduct=interfataProduct;
-        pBLL=new ProductBLL(interfataProduct);
-        interfataProduct.butonInserareListener(new butonInsert());
-        interfataProduct.butonStergereListener(new butonStergere());
-        interfataProduct.butonInapoiListener(new butonInapoi());
-        interfataProduct.butonUpdateListener(new butonUpdate());
-        interfataProduct.butonVizualizareListener(new butonVizualizare());
-        interfataProduct.butonExitListener(new butonExit());
+        this.productInterface=productInterface;
+        pBLL=new ProductBLL(productInterface);
+        productInterface.insertButtonListener(new insertButton());
+        productInterface.deleteButtonListener(new deleteButton());
+        productInterface.backButtonListener(new backButton());
+        productInterface.updateButtonListener(new updateButton());
+        productInterface.viewButtonListener(new viewButton());
+        productInterface.exitButtonListener(new exitButton());
     }
-    public class butonInsert implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            pBLL.inserareProdus();
-        }
-    }
-    public class butonStergere implements ActionListener
+    public class insertButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            pBLL.stergereProdus();
+            pBLL.insertProduct();
         }
     }
-    public class butonInapoi implements ActionListener
+    public class deleteButton implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pBLL.deleteProduct();
+        }
+    }
+    public class backButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            InterfataPrincipala ip=new InterfataPrincipala();
-            InterfataPrincipalaController ipc=new InterfataPrincipalaController(ip);
+            MainInterface ip=new MainInterface();
+            MainInterfaceController ipc=new MainInterfaceController(ip);
             ip.setVisible(true);
-            interfataProduct.setVisible(false);
+            productInterface.setVisible(false);
         }
     }
-    public class butonUpdate implements ActionListener
+    public class updateButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            pBLL.updateProdus();
+            pBLL.updateProduct();
         }
     }
-    public class butonVizualizare implements ActionListener
+    public class viewButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            pBLL.vizualizareProduse();
+            pBLL.productView();
         }
     }
-    public class butonExit implements ActionListener
+    public class exitButton implements ActionListener
     {
 
         @Override

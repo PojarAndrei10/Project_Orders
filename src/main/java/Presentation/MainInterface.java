@@ -4,22 +4,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class InterfataPrincipala extends JFrame{
+public class MainInterface extends JFrame{
     private JFrame frame=new JFrame();
     private JPanel panel=new JPanel();
-    JLabel titlu=new JLabel();
+    JLabel title=new JLabel();
     private JButton client=new JButton();
     private JButton product=new JButton();
     private JButton order=new JButton();
     private JButton exit=new JButton();
-    public void gestionareLabel()
+    public void labelManagement()
     {
-        titlu.setBounds(550, 110, 200, 30);
-        titlu.setText("PAGINA PRINCIPALA");
-        titlu.setFont(new Font("Serif", Font.ITALIC, 16));
-        panel.add(titlu);
+        title.setBounds(550, 110, 200, 30);
+        title.setText("PAGINA PRINCIPALA");
+        title.setFont(new Font("Serif", Font.ITALIC, 16));
+        panel.add(title);
     }
-    public InterfataPrincipala()
+    public MainInterface()
     {
         this.setTitle("WAREHOUSE");
         panel.setBackground(new Color(255, 255, 182));
@@ -28,7 +28,7 @@ public class InterfataPrincipala extends JFrame{
         this.getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
-        gestionareLabel();
+        labelManagement();
 
         client.setText("Client");
         client.setBounds(100,50,100,50);
@@ -48,13 +48,13 @@ public class InterfataPrincipala extends JFrame{
         panel.add(order);
         panel.add(exit);
     }
-    public void paginaClientListener(ActionListener e) {
+    public void clientsPageListener(ActionListener e) {
         client.addActionListener(e);
     }
-    public void paginaOrderListener(ActionListener e) {
+    public void ordersPageListener(ActionListener e) {
         order.addActionListener(e);
     }
-    public void paginaProductListener(ActionListener e) {
+    public void productsPageListener(ActionListener e) {
         product.addActionListener(e);
     }
 }

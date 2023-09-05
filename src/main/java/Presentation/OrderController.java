@@ -1,53 +1,51 @@
 package Presentation;
 
 import BusinessLogic.OrderBLL;
-import Presentation.InterfataPrincipala;
-import Presentation.InterfataPrincipalaController;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class OrderController {
     private OrderBLL oBLL;
-    private final InterfataOrder interfataOrder;
+    private final OrderInterface orderInterface;
 
-    public OrderController(InterfataOrder interfataOrder) {
-        oBLL = new OrderBLL(interfataOrder);
-        this.interfataOrder = new InterfataOrder();
-        interfataOrder.butonInserareListener(new butonInserare());
-        interfataOrder.butonStergereListener(new butonStergere());
-        interfataOrder.butonInapoiListener(new butonInapoi());
-        interfataOrder.butonVizualizareListener(new butonVizualizare());
-        interfataOrder.butonExitListener(new butonExit());
+    public OrderController(OrderInterface orderInterface) {
+        oBLL = new OrderBLL(orderInterface);
+        this.orderInterface = new OrderInterface();
+        orderInterface.insertButtonListener(new insertButton());
+        orderInterface.deleteButtonListener(new deleteButton());
+        orderInterface.backButtonListener(new backButton());
+        orderInterface.viewButtonListener(new viewButton());
+        orderInterface.exitButtonListener(new exitButton());
     }
-    public class butonInserare implements ActionListener {
+    public class insertButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            oBLL.inserareComanda();
+            oBLL.insertOrder();
         }
     }
-    public class butonStergere implements ActionListener {
+    public class deleteButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            oBLL.stergereComanda();
+            oBLL.deleteOrder();
         }
     }
-    public class butonInapoi implements ActionListener {
+    public class backButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            InterfataPrincipala ip = new InterfataPrincipala();
-            InterfataPrincipalaController ipc = new InterfataPrincipalaController(ip);
+            MainInterface ip = new MainInterface();
+            MainInterfaceController ipc = new MainInterfaceController(ip);
             ip.setVisible(true);
-            interfataOrder.setVisible(false);
+            orderInterface.setVisible(false);
         }
     }
-    public class butonVizualizare implements ActionListener {
+    public class viewButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            oBLL.vizualizareComenzi();
+            oBLL.orderView();
         }
     }
-    public class butonExit implements ActionListener
+    public class exitButton implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e) {

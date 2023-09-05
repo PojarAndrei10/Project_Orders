@@ -1,12 +1,12 @@
-import Presentation.InterfataPrincipala;
-import Presentation.InterfataPrincipalaController;
+import Presentation.MainInterface;
+import Presentation.MainInterfaceController;
 
 public class Main {
     public static void main(String[] args)
     {
-        InterfataPrincipala interfataPrincipala=new InterfataPrincipala();
-        InterfataPrincipalaController interfataPrincipalaController;
-        interfataPrincipalaController=new InterfataPrincipalaController(interfataPrincipala);
-        interfataPrincipala.setVisible(true);
+        MainInterface mainInterface=new MainInterface();
+        MainInterfaceController mainInterfaceController;
+        mainInterfaceController=new MainInterfaceController(mainInterface);
+        mainInterface.setVisible(true);
     }
 }
